@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Matemática</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #004aad;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .kpi-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .kpi {
+            background: white;
+            padding: 20px;
+            flex: 1;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .chart-section, .table-section, .conclusion-section {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard de Rendimiento en Matemática</h1>
+</header>
+
+<div class="container">
+    <!-- Resumen General -->
+    <section class="kpi-container">
+        <div class="kpi">
+            <h2>Promedio General</h2>
+            <p id="promedio">8.4</p>
+        </div>
+        <div class="kpi">
+            <h2>Aprobación</h2>
+            <p>76%</p>
+        </div>
+        <div class="kpi">
+            <h2>Asistencia</h2>
+            <p>85%</p>
+        </div>
+    </section>
+
+    <!-- Gráfico de Evolución -->
+    <section class="chart-section">
+        <h2>Evolución de Calificaciones</h2>
+        <canvas id="evolucionChart"></canvas>
+    </section>
+
+    <!-- Exploración -->
+    <section class="table-section">
+        <h2>Notas por Estudiante</h2>
+        <table>
+            <thead>
+                <tr><th>Estudiante</th><th>1° Parcial</th><th>2° Parcial</th><th>Final</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Ana</td><td>7</td><td>8</td><td>9</td></tr>
+                <tr><td>Luis</td><td>6</td><td>7</td><td>7</td></tr>
+                <tr><td>Carla</td><td>9</td><td>8</td><td>10</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Conclusiones -->
+    <section class="conclusion-section">
+        <h2>Conclusiones e Insights</h2>
+        <p>
+            Los datos muestran una tendencia creciente en el desempeño, con mayor desempeño en el examen final.
+            Se recomienda reforzar seguimiento temprano para estudiantes con bajo rendimiento inicial.
+        </p>
+    </section>
+</div>
+
+<script>
+    const ctx = document.getElementById('evolucionChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['1° Parcial', '2° Parcial', 'Final'],
+            datasets: [{
+                label: 'Promedio General',
+                data: [7.2, 7.9, 8.4],
+                borderWidth: 2
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
